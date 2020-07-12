@@ -11,10 +11,12 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.white));
 
     return MaterialApp(
+      //banner debug not visible
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      
+
       /* FLUTTER DEFAULT 
         title: 'Flutter Demo',
         theme: ThemeData(

@@ -1,3 +1,6 @@
 android/
 ios/
 build/
+my_app/.*
+my_app/pubspec.lock
+my_app/s

@@ -7,18 +7,29 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
-      /*title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),*/
+      /* FLUTTER DEFAULT 
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          primarySwatch: Colors.blue,
+          // This makes the visual density adapt to the platform that you run
+          // the app on. For desktop platforms, the controls will be smaller and
+          // closer together (more dense) than on mobile platforms.
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+      */
 
-      home: new Scaffold(),
+      home: new Scaffold(
+        
+        appBar: AppBar(
+          title: Text('Titolo AppBar'),
+          centerTitle: true,
+        ),
+
+
+      ),
       //MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

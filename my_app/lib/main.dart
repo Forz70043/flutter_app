@@ -1,10 +1,132 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_app/routes/routes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(new MaterialApp(home: new Application()));
+  //runApp(MyApp());
 }
 
+class Application extends StatefulWidget {
+  @override
+  _ApplicationState createState()=> new _ApplicationState();
+}
+
+class _ApplicationState extends State<Application> {
+  
+  String mtext=' ';
+  
+  Widget build(BuildContext context){
+    return new Scaffold(
+      appBar: //new MyCustomAppBar(titleAppBar: 'XXX Custom',backgroundColor: 'green',centerTitle: true).getCustomAppBar(
+        new AppBar(title: new Text('AppBar Widget'),
+        /*
+        backgroundColor: Colors.lightBlue,
+        leading: new Icon(Icons.menu),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.arrow_forward),
+            onPressed: (){ setState((){ mtext='Arrow icon button'; } );}
+          ),
+          new IconButton(
+            icon: new Icon(Icons.close),
+            onPressed: (){
+              setState(() { mtext='this is close button'; });
+            }
+          ),
+        ],
+        centerTitle: true,
+        elevation: 30.0,
+        titleSpacing: 80.0,
+        toolbarOpacity: 0.7,
+        */
+      ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new UserAccountsDrawerHeader(
+              accountEmail: new Text('alfonso@libero.it'), 
+              accountName: new Text('Alfonso Pisicchio'),
+              currentAccountPicture: new CircleAvatar(backgroundColor: Colors.black26,child: new Text('M')),
+              decoration: new BoxDecoration(color: Colors.orange),
+              otherAccountsPictures: <Widget>[
+                new CircleAvatar(backgroundColor: Colors.black26,),
+                new CircleAvatar(backgroundColor: Colors.pink,)
+              ],
+            ),
+            new ListTile(
+              title: new Text('Page 1'),
+              trailing: new Icon(Icons.arrow_forward),
+              onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new Routes('Page 1'))),),
+            new ListTile(
+              title: new Text('Page 2'),
+              trailing: new Icon(Icons.arrow_forward),
+              onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new Routes('Page 2'))),),
+            new ListTile(title: new Text('Page 3'),trailing: new Icon(Icons.arrow_forward)),
+          ]
+        ),
+      ),
+      body: new Center(
+        child: new Text(mtext),
+      )
+    );
+  }
+}
+
+class MyCustomAppBar{
+  String titleAppBar, backgroundColor, textStyleColor;
+  bool automaticallyImplyLeading;
+  bool centerTitle;
+  Map actions;
+
+  MyCustomAppBar({
+    this.titleAppBar,
+    this.backgroundColor,
+    this.textStyleColor,
+    this.automaticallyImplyLeading=false ,
+    this.centerTitle=true,
+    this.actions,
+  });
+
+  Widget getCustomAppBar(){
+    
+    return AppBar(
+      title: new Text(titleAppBar),
+      centerTitle: centerTitle,
+      automaticallyImplyLeading: automaticallyImplyLeading,
+
+    );
+  }
+
+}
+
+/*
+ * Class for create custom AppBar
+ */
+/*
+class MyCustomAppBar extends AppBar 
+{
+  MyCustomAppBar(String titleAppBar,String iconThemeColor):super(
+    iconTheme: IconThemeData(
+      color: Colors.black,    //change color here
+    ),
+    backgroundColor: Colors.white,
+    title: Text(titleAppBar, style: TextStyle(color: Colors.black)),
+    elevation: 0.0,
+    automaticallyImplyLeading: false,
+    actions: <Widget>[
+      IconButton(
+        icon: Icon(Icons.notifications),
+        onPressed: () => null,
+      ),
+      IconButton(
+        icon: Icon(Icons.person),
+        onPressed: () => null,
+      ),
+    ],
+  );
+}
+*/
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

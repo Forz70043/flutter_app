@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/routes/routes.dart';
+import 'package:my_app/screens/screens.dart';
+import 'package:contactus/contactus.dart';
 
 void main() {
   runApp(new MaterialApp(home: new Application()));
@@ -15,11 +17,13 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   
   String mtext=' ';
-  
+  static const _PATH = "assets/images/ap-logo";
+  static const _PIC01 = "$_PATH/AP-dev1.png";
+
   Widget build(BuildContext context){
     return new Scaffold(
       appBar: //new MyCustomAppBar(titleAppBar: 'XXX Custom',backgroundColor: 'green',centerTitle: true).getCustomAppBar(
-        new AppBar(title: new Text('AppBar Widget'),
+        new AppBar(title: new Text('Alfonso Pisicchio'),
         /*
         backgroundColor: Colors.lightBlue,
         leading: new Icon(Icons.menu),
@@ -45,24 +49,29 @@ class _ApplicationState extends State<Application> {
         child: new ListView(
           children: <Widget>[
             new UserAccountsDrawerHeader(
-              accountEmail: new Text('alfonso@libero.it'), 
+              accountEmail: new Text('alfonso.pisicchio@libero.it'), 
               accountName: new Text('Alfonso Pisicchio'),
-              currentAccountPicture: new CircleAvatar(backgroundColor: Colors.black26,child: new Text('M')),
-              decoration: new BoxDecoration(color: Colors.orange),
+              currentAccountPicture: new CircleAvatar(backgroundColor: Colors.white,child: new Image(image: AssetImage(_PIC01))),
+              decoration: new BoxDecoration(color: Colors.orange)
+              /*,
               otherAccountsPictures: <Widget>[
                 new CircleAvatar(backgroundColor: Colors.black26,),
                 new CircleAvatar(backgroundColor: Colors.pink,)
               ],
+              */
             ),
             new ListTile(
-              title: new Text('Page 1'),
+              title: new Text('About Me'),
               trailing: new Icon(Icons.arrow_forward),
               onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new Routes('Page 1'))),),
             new ListTile(
-              title: new Text('Page 2'),
+              title: new Text('Projects'),
               trailing: new Icon(Icons.arrow_forward),
               onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new Routes('Page 2'))),),
-            new ListTile(title: new Text('Page 3'),trailing: new Icon(Icons.arrow_forward)),
+            new ListTile(
+              title: new Text('Credits'),
+              trailing: new Icon(Icons.arrow_forward),
+              onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new Routes('Page 3'))),),
           ]
         ),
       ),
